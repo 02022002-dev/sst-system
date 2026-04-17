@@ -3,7 +3,7 @@ import { supabase } from "@/lib/supabase"
 type CreatePendenciaData = {
   inspection_id?: string | null
   problem_description: string
-  sector: string
+  sector?: string // 👈 agora é opcional
   risk_level: "baixo" | "medio" | "alto"
   responsible: string
   due_date?: string | null
@@ -32,7 +32,7 @@ export async function createPendenciaManual(data: CreatePendenciaData) {
     company_id: profile.company_id,
     inspection_id: data.inspection_id ?? null,
     problem_description: data.problem_description,
-    sector: data.sector,
+    sector: data.sector ?? null, // 👈 evita erro se não vier
     risk_level: data.risk_level,
     responsible: data.responsible,
     due_date: data.due_date ?? null,

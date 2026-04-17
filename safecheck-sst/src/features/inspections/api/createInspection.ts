@@ -33,7 +33,6 @@ export async function createInspection(
   const pendenciaResult = await createPendenciaManual({
     inspection_id: data.id,
     problem_description: params.title,
-    sector: params.sector,
     risk_level: (params.risk_level ?? 'baixo') as 'baixo' | 'medio' | 'alto',
     responsible: params.responsible,
     due_date: params.scheduled_at ?? null,
